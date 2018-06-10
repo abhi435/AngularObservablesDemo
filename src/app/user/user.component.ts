@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from "../app.service";
 import { User } from "./user.model";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user',
@@ -9,11 +10,19 @@ import { User } from "./user.model";
 })
 
 export class UserComponent implements OnInit {
-  users: [User]
+  observableUsers: Observable<User[]>
+  users: User[];
+  errorMessage: String;
   constructor(private appService: AppService) { }
   
   ngOnInit() {
-    this.appService.getFollowers().subscribe(
-      data => this.users = data);
+    this.observableUsers = this.appService.getFollowers();
+    console.log(this.observableUsers);
+    this.observableUsers.subscribe(
+      users => this.users = users,
+      error =>  this.errorMessage = <any>error); 
   }
+  
+  
+
 }

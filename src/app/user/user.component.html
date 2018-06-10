@@ -1,0 +1,22 @@
+<div class="row">
+  <div>
+    <h1>User logged in successfully!</h1>
+    <h2>Followers list:</h2>
+    <table class="greenTable">
+      <thead>
+        <tr>
+          <th class="hidden">Id</th>
+          <th>FirstName</th>
+          <th>LastName</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td class="hidden">{{user.id}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

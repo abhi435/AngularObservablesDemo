@@ -17,12 +17,9 @@ export class UserComponent implements OnInit {
   
   ngOnInit() {
     this.observableUsers = this.appService.getFollowers();
-    console.log(this.observableUsers);
     this.observableUsers.subscribe(
       users => this.users = users,
       error =>  this.errorMessage = <any>error); 
   }
-  
-  
 
 }

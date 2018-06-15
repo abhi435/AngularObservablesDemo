@@ -13,14 +13,7 @@ export class AppService {
 
   public getFollowers(): Observable<User[]> {
     return this.http.get("http://jsonplaceholder.typicode.com/users")
-    .map(this.extractData); 
-        
-    // let followers: User[] = [{ id: 1, firstName: 'Rohit', lastName: 'Abhimanyu'},
-    // { id: 2, firstName: 'Raj', lastName: 'Kapoor'},
-    // { id: 3, firstName: 'Ajit', lastName: 'Kumar'},
-    // { id: 4, firstName: 'Abhishek', lastName: 'Yadav'},
-    // ];
-    //return Observable.of(this.http.get("http://jsonplaceholder.typicode.com/users")).delay(500);
+      .map((data: User[]) => data); 
   }
 
   private handleErrorObservable (error: Response | any) {
@@ -28,7 +21,4 @@ export class AppService {
     return Observable.throw(error.message || error);
   }
 
-  private extractData(res: User[]) {
-    return res;
-  }
 }
